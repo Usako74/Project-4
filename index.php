@@ -6,4 +6,9 @@
  * Time: 09:22
  */
 require('controller/frontend.php');
-listPosts();
+try {
+    listPosts();
+}
+catch (Exception $e) {
+    echo 'Une erreur c\'est produite : \<br>' . $e->getMessage();
+}
