@@ -10,5 +10,5 @@ try {
     listPosts();
 }
 catch (Exception $e) {
-    echo 'Une erreur c\'est produite : \<br>' . $e->getMessage();
+    echo 'Une erreur c\'est produite : <br>' . $e->getMessage();
 }
