@@ -10,7 +10,7 @@
 <?php $title = 'Billet simple pour l\'Alaska'; ?>
 
 <?php ob_start(); ?>
-<h1>Titre de la liste des articles</h1>
+<h2 class="">Titre de la liste des articles</h2>
 <p>Liste des articles:</p>
 
 <?php
