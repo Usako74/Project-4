@@ -10,30 +10,31 @@
 <?php $title = 'Billet simple pour l\'Alaska'; ?>
 
 <?php ob_start(); ?>
-<h2 class="">Titre de la liste des articles</h2>
-<p>Liste des articles:</p>
+<main role="main" class="white-background">
+    <h2 class="no-margin articles-padding">Titre de la liste des articles</h2>
 
-<?php
-while ($data = $posts->fetch())
-{
-?>
-    <div class="news">
-        <h3>
-            <?= htmlspecialchars($data['title']) ?>
-            <b>le <?= $data['create_date_fr'] ?></b>
-        </h3>
-
-        <p>
-            <?= nl2br(htmlspecialchars($data['content'])) ?>
-            <br>
-            <b><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Afficher les commentaires</a></b>
-        </p>
-    </div>
-<?php
-}
-$posts->closeCursor();
-?>
-
+    <?php
+    while ($data = $posts->fetch())
+    {
+        ?>
+        <article class="news articles-padding">
+            <h3 class="title-design no-margin">
+                <?= htmlspecialchars($data['title']) ?>
+                <b>le <?= $data['create_date_fr'] ?></b>
+            </h3>
+            <p class="paragraph-design">
+                <?= nl2br(htmlspecialchars($data['content'])) ?>
+                <br>
+                <b>
+                    <a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Afficher les commentaires</a>
+                </b>
+            </p>
+        </article>
+        <?php
+    }
+    $posts->closeCursor();
+    ?>
+</main>
 
 <?php $content = ob_get_clean(); ?>
 
