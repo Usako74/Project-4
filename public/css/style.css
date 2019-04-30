@@ -2,15 +2,34 @@
 body {
     font-family: 'Jura', sans-serif;
     margin: 0;
+    background-color: rgba(0,102,204,0.5);
 }
 
 header {
     width: 90%;
     height: 700px;
+    border-radius: 60px 60px 0 0;
+    margin: 3% auto 0;
+}
+
+main {
+    width: 90%;
+    margin: auto;
 }
 
 figure {
     margin: 0;
+}
+
+h1, h2 {
+    padding: .7em 0;
+    margin: 0;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+    padding: 1% 0 0;
 }
 
 .text-center {
@@ -42,11 +61,23 @@ figure {
     align-self: center;
 }
 
+.white-background {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.articles-padding {
+    padding: 0.7em;
+}
+
 /*      Secondary Design        */
 .slider {
     position: relative;
     width: 100%;
-    height: 90%;
+    height: 88%;
 }
 
 .right {
@@ -59,10 +90,35 @@ figure {
 
 .play {
     display: none;
+    opacity: 0.2;
+}
+
+.pause {
+    opacity: 0.2;
 }
 
 .icon-center {
     align-items: center;
     margin: auto;
+    flex-direction: column;
+    height: 10%;
 }
 
+.showslider {
+    width: 100%;
+    height: 98%;
+}
+
+.title-design {
+    border: 2px solid white;
+    padding: 1%;
+    background-color: rgba(255,255,255,0.5);
+}
+
+.paragraph-design {
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    margin-top: 0;
+    padding: 1%;
+}
