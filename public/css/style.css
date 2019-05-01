@@ -32,6 +32,15 @@ a {
     padding: 1% 0 0;
 }
 
+input {
+    width: 30%;
+}
+
+textarea {
+    height: 250px;
+    width: 100%;
+}
+
 .text-center {
     text-align: center;
 }
@@ -121,4 +130,9 @@ a {
     border-bottom: 2px solid white;
     margin-top: 0;
     padding: 1%;
+}
+
+.comment-design {
+    width: 75%;
+    margin: 2% auto 1%;
 }

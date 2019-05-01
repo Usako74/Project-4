@@ -5,51 +5,53 @@
  * Date: 30/04/2019
  * Time: 17:17
  */
-echo $post['id'];
-//$title = htmlspecialchars($post['title']);
+$title = htmlspecialchars($post['title']);
 
 ob_start(); ?>
     <main role="main" class="white-background">
-        <p><a href="index.php">Retour à la liste des billets</a></p>
+        <p class="articles-padding no-margin"><a href="index.php">Retour à la liste des billets</a></p>
 
-        <article class="news">
-            <h3>
+        <article class="news articles-padding">
+            <h3 class="title-design no-margin">
 
-               <?= htmlspecialchars($post['title']) ?>
+                <?= htmlspecialchars($post['title']) ?>
                 <em>le <?= $post['creation_date_fr'] ?></em>
             </h3>
 
-            <p>
+            <p class="paragraph-design">
                 <?= nl2br(htmlspecialchars($post['content'])) ?>
             </p>
         </article>
 
-        <h2>Commentaires</h2>
+        <article class="articles-padding no-margin">
+            <h2 class="title-design no-margin">Commentaires</h2>
 
-        <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
-            <div>
-                <label for="author">Auteur</label><br>
-                <input type="text" id="author" name="author">
-            </div>
-            <div>
-                <label for="comment">Commentaire</label><br>
-                <textarea id="comment" name="comment"></textarea>
-            </div>
-            <div>
-                <input type="submit">
-            </div>
-        </form>
+            <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post" class="articles-padding">
+                <div>
+                    <label for="author">Auteur</label><br>
+                    <input type="text" id="author" name="author">
+                </div>
+                <div>
+                    <label for="comment">Commentaire</label><br>
+                    <textarea id="comment" name="comment"></textarea>
+                </div>
+                <div>
+                    <button type="submit">Envoyer</button>
+                </div>
+            </form>
 
-        <?php
-        while ($comment = $comments->fetch())
-        {
-            ?>
-            <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
-            <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
             <?php
-        }
-        ?>
-
+            while ($comment = $comments->fetch())
+            {
+                ?>
+                <div class="comment-design">
+                    <p class="no-margin title-design"><b><?= htmlspecialchars($comment['author']) ?></b> le <?= $comment['comment_date_fr'] ?></p>
+                    <p class="paragraph-design"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+                </div>
+                <?php
+            }
+            ?>
+        </article>
     </main>
 <?php $content = ob_get_clean(); ?>
 
