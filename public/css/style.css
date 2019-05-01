@@ -7,9 +7,19 @@ body {
 
 header {
     width: 90%;
-    height: 700px;
+    -webkit-border-radius: 60px 60px 0 0;
+    -moz-border-radius: 60px 60px 0 0;
     border-radius: 60px 60px 0 0;
     margin: 3% auto 0;
+}
+
+footer {
+    width: 90%;
+    height: 100px;
+    -webkit-border-radius: 0 0 60px 60px;
+    -moz-border-radius: 0 0 60px 60px;
+    border-radius: 0 0 60px 60px;
+    margin: 0 auto 3%;
 }
 
 main {
@@ -38,7 +48,8 @@ input {
 
 textarea {
     height: 250px;
-    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
 }
 
 .text-center {
@@ -70,19 +81,32 @@ textarea {
     align-self: center;
 }
 
+.space-content {
+    justify-content: space-around;
+}
+
 .white-background {
     background-color: rgba(255, 255, 255, 0.8);
+}
+
+.white-color {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .no-margin {
     margin: 0;
 }
 
-.articles-padding {
+.general-padding {
     padding: 0.7em;
 }
 
 /*      Secondary Design        */
+/* -- Slider Design -- */
+.height_header {
+    height: 700px;
+}
+
 .slider {
     position: relative;
     width: 100%;
@@ -91,19 +115,39 @@ textarea {
 
 .right {
     right: 0;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    width: 3%;
+    text-align: center;
 }
 
 .left {
     left: 0;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    width: 3%;
+    text-align: center;
 }
 
 .play {
     display: none;
-    opacity: 0.2;
+    opacity: 0.4;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
 }
 
 .pause {
-    opacity: 0.2;
+    opacity: 0.4;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.background-icon {
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .icon-center {
@@ -117,6 +161,11 @@ textarea {
     width: 100%;
     height: 98%;
 }
+
+
+
+/* -- End Slider Design -- */
+
 
 .title-design {
     border: 2px solid white;

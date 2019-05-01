@@ -9,9 +9,9 @@ $title = htmlspecialchars($post['title']);
 
 ob_start(); ?>
     <main role="main" class="white-background">
-        <p class="articles-padding no-margin"><a href="index.php">Retour à la liste des billets</a></p>
+        <p class="general-padding no-margin"><a href="index.php">Retour à la liste des billets</a></p>
 
-        <article class="news articles-padding">
+        <article class="news general-padding">
             <h3 class="title-design no-margin">
 
                 <?= htmlspecialchars($post['title']) ?>
@@ -23,10 +23,10 @@ ob_start(); ?>
             </p>
         </article>
 
-        <article class="articles-padding no-margin">
+        <article class="general-padding no-margin">
             <h2 class="title-design no-margin">Commentaires</h2>
 
-            <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post" class="articles-padding">
+            <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post" class="general-padding">
                 <div>
                     <label for="author">Auteur</label><br>
                     <input type="text" id="author" name="author">

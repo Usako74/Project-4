@@ -11,13 +11,13 @@
 
 <?php ob_start(); ?>
 <main role="main" class="white-background">
-    <h2 class="no-margin articles-padding">Titre de la liste des articles</h2>
+    <h2 class="no-margin general-padding">Titre de la liste des articles</h2>
 
     <?php
     while ($data = $posts->fetch())
     {
         ?>
-        <article class="news articles-padding">
+        <article class="news general-padding">
             <h3 class="title-design no-margin">
                 <?= htmlspecialchars($data['title']) ?>
                 <b>le <?= $data['create_date_fr'] ?></b>
