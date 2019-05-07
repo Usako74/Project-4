@@ -8,6 +8,7 @@
 // Loading Class
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
+require_once ('model/MembersManager.php');
 
 function listPosts()
 {
@@ -43,6 +44,38 @@ function addComment($postId, $author, $comment)
 
 function login()
 {
-    $postManager = new PostManager();
     require('view/backend/login.php');
 }
+
+function connect($login)
+{
+    $membersManager = new MembersManager();
+    $infos = $membersManager->connectInfos($login);
+
+    return $infos;
+}
+
+function register() {
+    require('view/backend/register.php');
+}
+
+function registered($pseudo, $password, $email) {
+    $membersManager = new MembersManager();
+    $infos = $membersManager->createMember($pseudo, $password, $email);
+    if ($infos === false) {
+        throw new Exception('Impossible de créer un compte, veuillez recommencer');
+    }
+}
+
+function admin() {
+    require('view/backend/admin.php');
+}
+
+function addPost($title, $content) {
+    $addPost = new PostManager();
+    $infos = $addPost->addPost($title, $content);
+    if ($infos === false) {
+        throw new Exception('Impossible de créer l\'article, veuillez rééssayer');
+    }
+}
+
