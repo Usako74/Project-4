@@ -11,20 +11,20 @@ ob_start(); ?>
     <main role="main" class="white-background">
         <p class="general-padding no-margin"><a href="index.php">Retour à la liste des billets</a></p>
 
-        <article class="news general-padding">
+        <article class="paragraph-design">
             <h3 class="title-design no-margin">
 
                 <?= htmlspecialchars($post['title']) ?>
                 <em>le <?= $post['creation_date_fr'] ?></em>
             </h3>
 
-            <p class="paragraph-design">
+            <p class="general-padding no-margin">
                 <?= nl2br(htmlspecialchars($post['content'])) ?>
             </p>
         </article>
 
         <article class="general-padding no-margin">
-            <h2 class="title-design no-margin">Commentaires</h2>
+            <h2 class="title-comment-design no-margin">Commentaires</h2>
 
             <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post" class="general-padding">
                 <div>
@@ -44,10 +44,10 @@ ob_start(); ?>
             while ($comment = $comments->fetch())
             {
                 ?>
-                <div class="comment-design">
-                    <p class="no-margin title-design"><b><?= htmlspecialchars($comment['author']) ?></b> le <?= $comment['comment_date_fr'] ?></p>
-                    <p class="paragraph-design"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-                </div>
+                <article class="paragraph-design comment-design">
+                    <h3 class="title-design no-margin"><b><?= htmlspecialchars($comment['author']) ?></b> le <?= $comment['comment_date_fr'] ?></h3>
+                    <p class="general-padding no-margin"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+                </article>
                 <?php
             }
             ?>

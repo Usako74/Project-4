@@ -17,18 +17,17 @@
     while ($data = $posts->fetch())
     {
         ?>
-        <article class="news general-padding">
+        <article class="paragraph-design">
             <h3 class="title-design no-margin">
                 <?= htmlspecialchars($data['title']) ?>
                 <b>le <?= $data['create_date_fr'] ?></b>
             </h3>
-            <p class="paragraph-design">
+            <p class="general-padding no-margin">
                 <?= nl2br(htmlspecialchars($data['content'])) ?>
-                <br>
-                <b>
-                    <a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Afficher les commentaires</a>
-                </b>
             </p>
+            <b>
+                <a href="index.php?action=post&amp;id=<?= $data['id']?>" class="general-padding">Afficher les commentaires</a>
+            </b>
         </article>
         <?php
     }

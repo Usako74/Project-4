@@ -5,8 +5,8 @@
  * Date: 22/04/2019
  * Time: 09:19
  */
+session_start()
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
