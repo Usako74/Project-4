@@ -1,0 +1,13 @@
+{% block footer %}
+    <footer class="white-background">
+        <p class="general-padding no-margin">plusieurs liens seront mis ici</p>
+        {{ app.request.session.get("pseudo") }}
+    </footer>
+
+    <script src='https://cloud.tinymce.com/5/tinymce.min.js?apiKey=urogiz8e1q5qmaovton6wqvvnys8yjztefkfdyi3tm1w970u'></script>
+    <script>
+        tinymce.init({
+            selector: '#tiny'
+        });
+    </script>
+{% endblock %}

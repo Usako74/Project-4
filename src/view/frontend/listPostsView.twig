@@ -1,0 +1,28 @@
+{% block title %} Billet simple pour l'Alaska {% endblock %}
+
+{% extends '/frontend/template.twig' %}
+
+{% block content %}
+    <main role="main" class="white-background">
+        <h2 class="no-margin general-padding">Titre de la liste des articles</h2>
+
+
+        {% for article in articles %}
+
+            <article class="paragraph-design">
+                <h3 class="title-design no-margin">
+                    {{ article.title }}
+                    {{ article.create_date_fr }}
+                </h3>
+                <p class="general-padding no-margin">
+                    {{ article.content }}
+                </p>
+                <b>
+                    <a href="index.php?action=post&amp;id={{ article.id }}" class="general-padding">Afficher les commentaires</a>
+                </b>
+            </article>
+        {% endfor %}
+
+    </main>
+
+{% endblock %}

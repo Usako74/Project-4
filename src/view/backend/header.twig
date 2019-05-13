@@ -1,0 +1,15 @@
+{% block header %}
+        <header class="white-background">
+            <div class="display-flex space-content">
+                <h1 class="text-center no-margin">Billet simple pour l'Alaska</h1>
+                {% if session.pseudo is defined %}
+                    <a href="index.php?action=admin" class="align-self-center">Administration</a>
+                    <a href="index.php?action=disconnect" class="align-self-center">Se déconnecter</a>
+                    <p class="align-self-center">Vous êtes connecté en tant que {{ session.pseudo }} !</p>
+                {% else %}
+                    <a href="index.php?action=login" class="align-self-center">Se connecter</a>
+                    <a href="index.php?action=register" class="align-self-center">Créer un compte</a>
+                {% endif %}
+            </div>
+        </header>
+{% endblock %}

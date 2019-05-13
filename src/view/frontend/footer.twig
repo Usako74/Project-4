@@ -1,0 +1,9 @@
+{% block footer %}
+<footer class="white-background">
+    <p class="general-padding no-margin">plusieurs liens seront mis ici</p>
+    {{ app.request.session.get("pseudo") }}
+</footer>
+
+<script src="../public/js/Slider.js"></script>
+<script src="../public/js/script.js"></script>
+{% endblock %}
