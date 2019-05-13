@@ -6,7 +6,9 @@
  * Time: 17:22
  */
 
-require_once("model/Manager.php");
+//namespace Usako\Source\Model;
+
+require_once("../config/Manager.php");
 
 class CommentManager extends Manager
 {

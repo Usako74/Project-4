@@ -5,11 +5,15 @@
  * Date: 22/04/2019
  * Time: 18:02
  */
-require_once("model/Manager.php");
+
+//namespace Usako\Source\Model;
+
+require_once("../config/Manager.php");
+//use \Usako\Config;
 
 class PostManager extends Manager
 {
-    public function  addPost($title, $content)
+    public function addPost($title, $content)
     {
         $db = $this->dbConnect();
         $req = $db->prepare('INSERT INTO posts(author, title, content, created_date_time) VALUES(\'Usako\', ?, ?, NOW())');
@@ -30,7 +34,7 @@ class PostManager extends Manager
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(created_date_time, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');
         $req->execute(array($postId));
-        $post = $req->fetch();
+        $post = $req->fetch(PDO::FETCH_ASSOC);
         return $post;
     }
 

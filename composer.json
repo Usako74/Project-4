@@ -1,0 +1,29 @@
+{
+  "name": "Usako",
+  "type": "website",
+  "description": "Project 4: Blog - PHP - SQL",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Usako",
+      "email": "usako@usako.fr",
+      "homepage": "https://www.usako.fr",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/",
+      "public\\": "public/"
+    }
+  },
+  "require": {
+    "twig/twig": "^2.9",
+    "twig/extensions": "*"
+  },
+  "config": {
+    "platform": {
+      "php": "7.0"
+    }
+  }
+}
