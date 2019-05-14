@@ -23,6 +23,7 @@ class Twig
         $this->twig->addGlobal('session', $_SESSION);
         $this->twig->addGlobal('post', $_POST);
         $this->twig->addGlobal('get', $_GET);
+        $this->twig->addFilter( new \Twig\TwigFilter('nl2br', 'nl2br', ['is_safe' => ['html']]));
     }
 
 }
