@@ -42,6 +42,10 @@ a {
     text-decoration: none;
 }
 
+ul {
+    padding: 0;
+}
+
 input {
     width: 30%;
     background-color: white;
@@ -75,6 +79,10 @@ textarea {
 
 .display-flex {
     display: flex;
+}
+
+.display-none {
+    display: none;
 }
 
 .position-absolute {
@@ -119,6 +127,13 @@ textarea {
 }
 
 /*      Secondary Design        */
+/* -- Header : NavBar -- */
+.nav-hover:first-child:hover .nav-secondary {
+    display: block;
+}
+
+
+
 /* -- Slider Design -- */
 .height_header {
     height: 700px;

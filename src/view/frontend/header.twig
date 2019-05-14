@@ -2,14 +2,37 @@
 <header class="white-background height_header">
     <div class="display-flex space-content">
         <h1 class="text-center no-margin">Billet simple pour l'Alaska</h1>
-        {% if session.pseudo is defined %}
-        <a href="index.php?action=admin" class="align-self-center">Administration</a>
-        <a href="index.php?action=disconnect" class="align-self-center">Se déconnecter</a>
-        <p class="align-self-center">Vous êtes connecté en tant que {{ session.pseudo }} !</p>
-        {% else %}
-        <a href="index.php?action=login" class="align-self-center">Se connecter</a>
-        <a href="index.php?action=register" class="align-self-center">Créer un compte</a>
-        {% endif %}
+        <nav>
+            {% if session.pseudo is defined %}
+                <ul class="display-flex">
+                    <li class="nav-hover">
+                        <a href="index.php?action=admin" class="align-self-center">Administration</a>
+                        <ul class="display-none nav-secondary">
+                            <li>
+                                Ecrire un article
+                            </li>
+                            <li>
+                                Modération
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="index.php?action=disconnect" class="align-self-center">Se déconnecter</a>
+                    </li>
+                </ul>
+                <p class="align-self-center">Vous êtes connecté en tant que {{ session.pseudo }} !</p>
+            {% else %}
+                <ul>
+                    <li>
+                        <a href="index.php?action=login" class="align-self-center">Se connecter</a>
+                    </li>
+                    <li>
+                        <a href="index.php?action=register" class="align-self-center">Créer un compte</a>
+                    </li>
+                </ul>
+            {% endif %}
+        </nav>
     </div>
     <div id="slider" class="slider display-flex">
         <div class="display-flex">

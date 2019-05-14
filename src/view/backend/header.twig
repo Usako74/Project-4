@@ -1,15 +1,38 @@
 {% block header %}
-        <header class="white-background">
-            <div class="display-flex space-content">
-                <h1 class="text-center no-margin">Billet simple pour l'Alaska</h1>
+    <header class="white-background">
+        <div class="display-flex space-content">
+            <h1 class="text-center no-margin">Billet simple pour l'Alaska</h1>
+            <nav>
                 {% if session.pseudo is defined %}
-                    <a href="index.php?action=admin" class="align-self-center">Administration</a>
-                    <a href="index.php?action=disconnect" class="align-self-center">Se déconnecter</a>
+                    <ul>
+                        <li>
+                            <a href="index.php?action=admin" class="align-self-center">Administration</a>
+                            <ul>
+                                <li>
+                                    Ecrire un article
+                                </li>
+                                <li>
+                                    Modération
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="index.php?action=disconnect" class="align-self-center">Se déconnecter</a>
+                        </li>
+                    </ul>
                     <p class="align-self-center">Vous êtes connecté en tant que {{ session.pseudo }} !</p>
                 {% else %}
-                    <a href="index.php?action=login" class="align-self-center">Se connecter</a>
-                    <a href="index.php?action=register" class="align-self-center">Créer un compte</a>
+                    <ul>
+                        <li>
+                            <a href="index.php?action=login" class="align-self-center">Se connecter</a>
+                        </li>
+                        <li>
+                            <a href="index.php?action=register" class="align-self-center">Créer un compte</a>
+                        </li>
+                    </ul>
                 {% endif %}
-            </div>
-        </header>
+            </nav>
+        </div>
+    </header>
 {% endblock %}
