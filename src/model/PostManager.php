@@ -46,4 +46,13 @@ class PostManager extends Manager
         $infos = $req->fetch();
         return $infos;
     }
+
+    public function deletePost($id){
+        $db = $this->dbConnect();
+        $req = $db->prepare('DELETE FROM posts WHERE ID = ?;');
+        $req->execute(array($id));
+        $infos = $req->fetch();
+        return $infos;
+    }
+
 }
