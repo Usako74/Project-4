@@ -6,13 +6,17 @@
  * Time: 10:26
  */
 
-//namespace Usako\Source\Controller;
+namespace App\Controller;
 
 // Loading Class
-require_once('../src/model/PostManager.php');
-require_once('../src/model/CommentManager.php');
-require_once ('../src/model/MembersManager.php');
-require_once ('../src/controller/Twig.php');
+use \App\Model\PostManager;
+use \App\Model\CommentManager;
+use \App\Model\MembersManager;
+use \App\Controller\Twig;
+//require_once('../src/model/PostManager.php');
+//require_once('../src/model/CommentManager.php');
+//require_once ('../src/model/MembersManager.php');
+//require_once ('../src/controller/Twig.php');
 
 
 class Controller extends Twig

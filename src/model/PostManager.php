@@ -6,7 +6,9 @@
  * Time: 18:02
  */
 
-//namespace Usako\Source\Model;
+namespace App\Model;
+
+use \Conf\Manager;
 
 require_once("../config/Manager.php");
 //use \Usako\Config;

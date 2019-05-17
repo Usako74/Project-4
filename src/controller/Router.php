@@ -6,9 +6,10 @@
  * Time: 09:22
  */
 
-//namespace Usako\Source\Controller;
+namespace App\Controller;
+use \App\Controller\Controller;
 
-require('Controller.php');
+//require('Controller.php');
 
 class Router extends Controller
 {

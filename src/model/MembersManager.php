@@ -6,9 +6,10 @@
  * Time: 09:35
  */
 
-//namespace Usako\Source\Model;
+namespace App\Model;
 
-require_once("../config/Manager.php");
+use \Conf\Manager;
+
 
 class MembersManager extends Manager
 {

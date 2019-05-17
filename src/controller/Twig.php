@@ -6,6 +6,8 @@
  * Time: 19:50
  */
 
+namespace App\Controller;
+
 require_once '../vendor/autoload.php';
 
 class Twig
