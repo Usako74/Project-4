@@ -67,6 +67,13 @@ class Controller extends Twig
         echo $this->twig->render('frontend/register.twig');
     }
 
+    public function checkPseudo($login)
+    {
+        $membersManager = new MembersManager();
+        $infos = $membersManager->checkPseudo($login);
+        return $infos;
+    }
+
     public function registered($pseudo, $password, $email)
     {
         $membersManager = new MembersManager();
@@ -81,6 +88,22 @@ class Controller extends Twig
         echo $this->twig->render('backend/admin.twig');
     }
 
+    public function moderate()
+    {
+        $getReportComment = new CommentManager();
+        $infos = $getReportComment->getReportsComments();
+        echo $this->twig->render('backend/moderate.twig',
+            array('comments'=>$infos));
+    }
+
+    public  function deleteComment($id)
+    {
+        $getReportComment = new CommentManager();
+        $infos = $getReportComment->deleteComment($id);
+        echo $this->twig->render('backend/moderate.twig',
+            array('delete'=>$infos));
+    }
+
     public function addPost($title, $content)
     {
         $addPost = new PostManager();
@@ -89,4 +112,11 @@ class Controller extends Twig
             throw new Exception('Impossible de créer l\'article, veuillez rééssayer');
         }
     }
+
+    public function reportComment($report, $id)
+    {
+        $reportComment = new CommentManager();
+        $infos = $reportComment->reportComment($report, $id);
+    }
+
 }
