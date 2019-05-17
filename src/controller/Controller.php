@@ -9,15 +9,9 @@
 namespace App\Controller;
 
 // Loading Class
-use \App\Model\PostManager;
-use \App\Model\CommentManager;
-use \App\Model\MembersManager;
-use \App\Controller\Twig;
-//require_once('../src/model/PostManager.php');
-//require_once('../src/model/CommentManager.php');
-//require_once ('../src/model/MembersManager.php');
-//require_once ('../src/controller/Twig.php');
-
+use App\Model\PostManager;
+use App\Model\CommentManager;
+use App\Model\MembersManager;
 
 class Controller extends Twig
 {
@@ -47,7 +41,7 @@ class Controller extends Twig
         $affectedLines = $commentManager->postComment($postId, $author, $comment);
 
         if ($affectedLines === false) {
-            throw new Exception('Impossible d\'ajouter le commentaire !');
+            throw new \Exception('Impossible d\'ajouter le commentaire !');
         } else {
             header('Location: index.php?action=post&id=' . $postId);
         }
@@ -83,7 +77,7 @@ class Controller extends Twig
         $membersManager = new MembersManager();
         $infos = $membersManager->createMember($pseudo, $password, $email);
         if ($infos === false) {
-            throw new Exception('Impossible de créer un compte, veuillez recommencer');
+            throw new \Exception('Impossible de créer un compte, veuillez recommencer');
         }
     }
 
@@ -111,16 +105,13 @@ class Controller extends Twig
     public function addPost($title, $content)
     {
         $addPost = new PostManager();
-        $infos = $addPost->addPost($title, $content);
-        if ($infos === false) {
-            throw new Exception('Impossible de créer l\'article, veuillez rééssayer');
-        }
+        $addPost->addPost($title, $content);
     }
 
     public function reportComment($report, $id)
     {
         $reportComment = new CommentManager();
-        $infos = $reportComment->reportComment($report, $id);
+        $reportComment->reportComment($report, $id);
     }
 
 }

@@ -6,9 +6,15 @@
  * Time: 08:32
  */
 
-//use \Usako\Source\Controller;
+use \App\Controller\Router;
 session_start();
-require_once('../src/controller/Router.php');
+
+//autoload
+require_once dirname(__DIR__).'/vendor/autoload.php';
+
+//require_once('../src/controller/Router.php');
+
+
 
 $router = new Router();
 $router->run();

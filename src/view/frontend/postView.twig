@@ -9,7 +9,6 @@
 
         <article class="paragraph-design">
             <h3 class="title-design no-margin">
-
                 {{ post.title }}
                 {{ post.creation_date_fr }}
             </h3>
@@ -17,6 +16,9 @@
             <p class="general-padding no-margin article-font">
                 {{ post.content  | nl2br }}
             </p>
+            {% if session.pseudo is defined and session.group_id == 1 %}
+                <a href="#">Modifier l'article</a>
+            {% endif %}
         </article>
 
         <article class="general-padding no-margin">

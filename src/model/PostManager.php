@@ -8,10 +8,7 @@
 
 namespace App\Model;
 
-use \Conf\Manager;
-
-require_once("../config/Manager.php");
-//use \Usako\Config;
+use Conf\Manager;
 
 class PostManager extends Manager
 {
@@ -36,7 +33,7 @@ class PostManager extends Manager
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(created_date_time, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');
         $req->execute(array($postId));
-        $post = $req->fetch(PDO::FETCH_ASSOC);
+        $post = $req->fetch(\PDO::FETCH_ASSOC);
         return $post;
     }
 

@@ -7,9 +7,6 @@
  */
 
 namespace App\Controller;
-use \App\Controller\Controller;
-
-//require('Controller.php');
 
 class Router extends Controller
 {
@@ -25,17 +22,17 @@ class Router extends Controller
                     if (isset($_GET['id']) && $_GET['id'] > 0) {
                         $this->post();
                     } else {
-                        throw new Exception('Aucun identifiant de billet envoyé');
+                        throw new \Exception('Aucun identifiant de billet envoyé');
                     }
                 } elseif ($_GET['action'] == 'addComment') {
                     if (isset($_GET['id']) && $_GET['id'] > 0) {
                         if (!empty($_POST['author']) && !empty($_POST['comment'])) {
                             $this->addComment($_GET['id'], $_POST['author'], $_POST['comment']);
                         } else {
-                            throw new Exception('Tous les champs ne sont pas remplis !');
+                            throw new \Exception('Tous les champs ne sont pas remplis !');
                         }
                     } else {
-                        throw new Exception('Aucun identifiant de billet envoyé');
+                        throw new \Exception('Aucun identifiant de billet envoyé');
                     }
                 } elseif ($_GET['action'] == 'login') {
                     if (isset($_SESSION['pseudo'])) {
@@ -48,7 +45,7 @@ class Router extends Controller
                                 $passwordOk = password_verify($_POST['password'], $infos['password']);
 
                                 if (!$passwordOk) {
-                                    throw new Exception('Mauvais identifiant ou mot de passe !');
+                                    throw new \Exception('Mauvais identifiant ou mot de passe !');
                                 } else {
                                     if ($passwordOk) {
                                         $_SESSION['id'] = $infos['id'];
@@ -70,7 +67,7 @@ class Router extends Controller
                                 if ($this->checkPseudo($_POST['pseudo']) == 0){
                                     $passwordOk = ($_POST['password'] === $_POST['password2']);
                                     if (!$passwordOk) {
-                                        throw new Exception('Les mots de passe ne sont pas identiques');
+                                        throw new \Exception('Les mots de passe ne sont pas identiques');
                                     } else {
                                         if ($passwordOk) {
                                             $passwordHash = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -83,10 +80,10 @@ class Router extends Controller
                                         }
                                     }
                                 } else {
-                                    throw new Exception('Cet identifiant existe déjà');
+                                    throw new \Exception('Cet identifiant existe déjà');
                                 }
                             } else {
-                                throw new Exception('Une erreur est survenue, veuillez recommencer');
+                                throw new \Exception('Une erreur est survenue, veuillez recommencer');
                             }
                         }
                     }
@@ -108,7 +105,7 @@ class Router extends Controller
                                 $this->addPost($_POST['title'], $_POST['content']);
                                 echo 'Article envoyé !';
                             } else {
-                                throw new Exception('Tous les champs ne sont pas remplis !');
+                                throw new \Exception('Tous les champs ne sont pas remplis !');
                             }
                         }
                     } else {
@@ -135,7 +132,7 @@ class Router extends Controller
             } else {
                 $this->listPosts();
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             echo 'Une erreur s\'est produite : <br>' . $e->getMessage();
         }
     }
