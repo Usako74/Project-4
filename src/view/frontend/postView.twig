@@ -4,45 +4,50 @@
 {% extends '/frontend/template.twig' %}
 
 {% block content %}
-<main role="main" class="white-background">
-    <p class="general-padding no-margin"><a href="index.php">Retour à la liste des billets</a></p>
+    <main role="main" class="white-background">
+        <p class="general-padding no-margin"><a href="index.php">Retour à la liste des billets</a></p>
 
-    <article class="paragraph-design">
-        <h3 class="title-design no-margin">
+        <article class="paragraph-design">
+            <h3 class="title-design no-margin">
 
-            {{ post.title }}
-            {{ post.creation_date_fr }}
-        </h3>
+                {{ post.title }}
+                {{ post.creation_date_fr }}
+            </h3>
 
-        <p class="general-padding no-margin">
-            {{ post.content }}
-        </p>
-    </article>
-
-    <article class="general-padding no-margin">
-        <h2 class="title-comment-design no-margin">Commentaires</h2>
-
-        <form action="index.php?action=addComment&amp;id={{ post.id }}" method="post" class="general-padding">
-            <div>
-                <label for="author">Auteur</label><br>
-                <input type="text" id="author" name="author">
-            </div>
-            <div>
-                <label for="comment">Commentaire</label><br>
-                <textarea id="comment" name="comment"></textarea>
-            </div>
-            <div>
-                <button type="submit">Envoyer</button>
-            </div>
-        </form>
-
-        {% for comment in comments %}
-        <article class="paragraph-design comment-design">
-            <h3 class="title-design no-margin"><b>{{ comment.author }}</b> le {{ comment.comment_date_fr }}</h3>
-            <p class="general-padding no-margin">{{ comment.comment }}</p>
+            <p class="general-padding no-margin article-font">
+                {{ post.content  | nl2br }}
+            </p>
         </article>
-        {% endfor %}
-    </article>
-</main>
+
+        <article class="general-padding no-margin">
+            <h2 class="title-comment-design no-margin">Commentaires</h2>
+
+            <form action="index.php?action=addComment&amp;id={{ post.id }}" method="post" class="general-padding">
+                <div>
+                    <label for="author">Auteur</label><br>
+                    <input type="text" id="author" name="author">
+                </div>
+                <div>
+                    <label for="comment">Commentaire</label><br>
+                    <textarea id="comment" name="comment"></textarea>
+                </div>
+                <div>
+                    <button type="submit">Envoyer</button>
+                </div>
+            </form>
+
+            {% for comment in comments %}
+                <article class="paragraph-design comment-design">
+                    <h3 class="title-design no-margin"><b>{{ comment.author }}</b> le {{ comment.comment_date_fr }}</h3>
+                    <p class="general-padding no-margin">{{ comment.comment }}</p>
+                    {% if comment.comment_report == 0 %}
+                        <a href='index.php?action=report&amp;report=1&amp;id={{ comment.id }}' class="text-right">Signaler le commentaire</a>
+                    {% else %}
+                        <a href="index.php?action=report&amp;report=0&amp;id={{ comment.id }}" class="text-right">Ne plus signaler le commentaire</a>
+                    {% endif %}
+                </article>
+            {% endfor %}
+        </article>
+    </main>
 {% endblock %}
 
