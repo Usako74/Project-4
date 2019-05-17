@@ -1,0 +1,20 @@
+{% block title %} Billet simple pour L'alaska - Modération {% endblock %}
+
+{% extends '/backend/template.twig' %}
+
+{% block content %}
+    <main role="main" class="white-background">
+        <h2 class="general-padding">Modération du site</h2>
+        <p class="general-padding no-margin"><a href="index.php">Retour à la liste des billets</a></p>
+        <h3 class="general-padding  no-margin">Liste des commentaires signalés:</h3>
+        <article class="paragraph-design comment-design">
+            {% for comment in comments if comment.comment_report == 1 %}
+                <h4 class="title-design no-margin"><b>{{ comment.author }}</b> le {{ comment.comment_date_fr }}</h4>
+                <p class="general-padding no-margin">{{ comment.comment }}</p>
+                <a href="index.php?action=deleteComment&amp;id={{ comment.id }}" class="text-right">Supprimer ce commentaire</a>
+            {% else %}
+                <p class="general-padding no-margin">Il n'y a pas de commentaire(s) signalé(s)</p>
+            {% endfor %}
+        </article>
+    </main>
+{% endblock %}

@@ -3,16 +3,16 @@
         <div class="display-flex space-content">
             <h1 class="text-center no-margin">Billet simple pour l'Alaska</h1>
             <nav>
-                {% if session.pseudo is defined %}
-                    <ul>
-                        <li>
-                            <a href="index.php?action=admin" class="align-self-center">Administration</a>
-                            <ul>
+                {% if session.pseudo is defined and session.group_id == 1 %}
+                    <ul class="display-flex ul-size">
+                        <li class="nav-hover">
+                            Administration</a>
+                            <ul class="display-none nav-secondary position-absolute">
                                 <li>
-                                    Ecrire un article
+                                    <a href="index.php?action=createarticle" class="align-self-center">Ecrire un article</a>
                                 </li>
                                 <li>
-                                    Modération
+                                    <a href="index.php?action=moderate" class="align-self-center">Modération</a>
                                 </li>
                             </ul>
                         </li>
@@ -22,8 +22,15 @@
                         </li>
                     </ul>
                     <p class="align-self-center">Vous êtes connecté en tant que {{ session.pseudo }} !</p>
+                {% elseif session.pseudo is defined and session.group_id == 0 %}
+                    <ul class="display-flex ul-size">
+                        <li>
+                            <a href="index.php?action=disconnect" class="align-self-center">Se déconnecter</a>
+                        </li>
+                    </ul>
+                    <p class="align-self-center">Vous êtes connecté en tant que {{ session.pseudo }} !</p>
                 {% else %}
-                    <ul>
+                    <ul class="display-flex ul-size">
                         <li>
                             <a href="index.php?action=login" class="align-self-center">Se connecter</a>
                         </li>
