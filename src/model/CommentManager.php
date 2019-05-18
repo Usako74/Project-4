@@ -9,7 +9,6 @@
 namespace App\Model;
 
 use Conf\Manager;
-//require_once("../config/Manager.php");
 
 class CommentManager extends Manager
 {

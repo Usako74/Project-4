@@ -12,7 +12,8 @@
             <article class="paragraph-design">
                 <h3 class="title-design no-margin">
                     {{ article.title }}
-                    {{ article.create_date_fr }}
+                    le {{ article.create_date_fr }}
+                    par {{ article.author }}
                 </h3>
                 <p class="general-padding no-margin article-font">
                     {{ article.content | nl2br }}
@@ -21,7 +22,7 @@
                 <div class="display-flex general-padding space-btw">
                     <a href="index.php?action=post&amp;id={{ article.id }}">Afficher les commentaires</a>
                     {% if session.pseudo is defined and session.group_id == 1 %}
-                        <a href="#">Modifier l'article</a>
+                        <a href="index.php?action=modify&amp;id={{ article.id }}">Modifier l'article</a>
                     {% endif %}
                 </div>
 

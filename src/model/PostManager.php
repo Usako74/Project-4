@@ -12,11 +12,11 @@ use Conf\Manager;
 
 class PostManager extends Manager
 {
-    public function addPost($title, $content)
+    public function addPost($author, $title, $content)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO posts(author, title, content, created_date_time) VALUES(\'Usako\', ?, ?, NOW())');
-        $req->execute(array($title, $content));
+        $req = $db->prepare('INSERT INTO posts(author, title, content, created_date_time) VALUES(?, ?, ?, NOW())');
+        $req->execute(array($author, $title, $content));
         $infos = $req->fetch();
         return $infos;
     }
@@ -31,7 +31,7 @@ class PostManager extends Manager
     public function getPost($postId)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(created_date_time, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');
+        $req = $db->prepare('SELECT id, author, title, content, DATE_FORMAT(created_date_time, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');
         $req->execute(array($postId));
         $post = $req->fetch(\PDO::FETCH_ASSOC);
         return $post;
