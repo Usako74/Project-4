@@ -23,6 +23,12 @@ class Controller extends Twig
             array('articles'=>$posts));
     }
 
+    public function addPost($author, $title, $content)
+    {
+        $addPost = new PostManager();
+        $addPost->addPost($author, $title, $content);
+    }
+
     public function post()
     {
         $postManager = new PostManager();
@@ -32,6 +38,20 @@ class Controller extends Twig
         $comments = $commentManager->getComments($_GET['id']);
         echo $this->twig->render('frontend/postView.twig',
             array('post'=>$post, 'comments'=>$comments));
+    }
+
+    public function modifyPost()
+    {
+        $postManager = new PostManager();
+        $post = $postManager->getPost($_GET['id']);
+        echo $this->twig->render('backend/modify.twig',
+            array('post'=>$post));
+    }
+
+    public function updatePost($title, $content, $id)
+    {
+        $postManager = new PostManager();
+        $post = $postManager->updatePost($title, $content, $id);
     }
 
     public function addComment($postId, $author, $comment)
@@ -100,12 +120,6 @@ class Controller extends Twig
         $infos = $getReportComment->deleteComment($id);
         echo $this->twig->render('backend/moderate.twig',
             array('delete'=>$infos));
-    }
-
-    public function addPost($title, $content)
-    {
-        $addPost = new PostManager();
-        $addPost->addPost($title, $content);
     }
 
     public function reportComment($report, $id)

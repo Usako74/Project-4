@@ -17,8 +17,7 @@ class Router extends Controller
 
                 if ($_GET['action'] == 'listPosts') {
                     $this->listPosts();
-                } elseif
-                ($_GET['action'] == 'post') {
+                } elseif ($_GET['action'] == 'post') {
                     if (isset($_GET['id']) && $_GET['id'] > 0) {
                         $this->post();
                     } else {
@@ -102,8 +101,22 @@ class Router extends Controller
                         $this->admin();
                         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             if (!empty($_POST['title']) && !empty($_POST['content'])) {
-                                $this->addPost($_POST['title'], $_POST['content']);
+                                $this->addPost($_SESSION['pseudo'],$_POST['title'], $_POST['content']);
                                 echo 'Article envoyé !';
+                            } else {
+                                throw new \Exception('Tous les champs ne sont pas remplis !');
+                            }
+                        }
+                    } else {
+                        $this->listPosts();
+                    }
+                }elseif ($_GET['action'] == 'modify') {
+                    if (isset($_SESSION['pseudo']) && $_SESSION['group_id'] == 1) {
+                        $this->modifyPost();
+                        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                            if (!empty($_POST['title']) && !empty($_POST['content'])) {
+                                $this->updatePost($_POST['title'], $_POST['content'], $_GET['id']);
+                                echo 'Article modifié !';
                             } else {
                                 throw new \Exception('Tous les champs ne sont pas remplis !');
                             }

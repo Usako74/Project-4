@@ -1,0 +1,22 @@
+{% block title %} Billet simple pour L'alaska - Administration {% endblock %}
+
+{% extends '/backend/template.twig' %}
+
+{% block content %}
+    <main role="main" class="white-background">
+        <h2 class="general-padding">Modification d'un article</h2>
+        <p class="general-padding no-margin"><a href="index.php">Retour à la liste des billets</a></p>
+        <form method="post">
+            <div>
+                <label>Titre</label>
+                <input id="title" name="title" value="{{ post.title }}">
+            </div>
+            <div>
+                <textarea id="tiny" name="content">{{ post.content }}</textarea>
+            </div>
+            <div>
+                <button type="submit">Envoyer</button>
+            </div>
+        </form>
+    </main>
+{% endblock %}
