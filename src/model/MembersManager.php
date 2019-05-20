@@ -32,7 +32,7 @@ class MembersManager extends Manager
     public function checkPseudo($login)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT COUNT(pseudo) from members where pseudo = ?');
+        $req = $db->prepare('SELECT COUNT(pseudo) AS result from members where pseudo = ?');
         $req->execute(array($login));
         $infos = $req->fetch();
         return $infos;
