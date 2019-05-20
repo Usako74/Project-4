@@ -27,11 +27,10 @@ class Router extends Controller
                     if (isset($_GET['id']) && $_GET['id'] > 0) {
                         if (!empty($_POST['author']) && !empty($_POST['comment'])) {
                             $this->addComment($_GET['id'], $_POST['author'], $_POST['comment']);
-                        } else {
-                            throw new \Exception('Tous les champs ne sont pas remplis !');
+                            header("Location: index.php?action=post&id=".$_GET['id']."#comments");
                         }
                     } else {
-                        throw new \Exception('Aucun identifiant de billet envoyé');
+                        throw new \Exception('Une erreur s\'est produite');
                     }
                 } elseif ($_GET['action'] == 'login') {
                     if (isset($_SESSION['pseudo'])) {
@@ -70,7 +69,7 @@ class Router extends Controller
                                     } else {
                                         if ($passwordOk) {
                                             $passwordHash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                                            $infos = $this->registered($_POST['pseudo'], $passwordHash, $_POST['email']);
+                                            $this->registered($_POST['pseudo'], $passwordHash, $_POST['email']);
                                             $infos2 = $this->connect($_POST['pseudo']);
                                             $_SESSION['id'] = $infos2['id'];
                                             $_SESSION['pseudo'] = $infos2['pseudo'];
@@ -102,9 +101,7 @@ class Router extends Controller
                         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             if (!empty($_POST['title']) && !empty($_POST['content'])) {
                                 $this->addPost($_SESSION['pseudo'],$_POST['title'], $_POST['content']);
-                                echo 'Article envoyé !';
-                            } else {
-                                throw new \Exception('Tous les champs ne sont pas remplis !');
+                                header('Location: index.php');
                             }
                         }
                     } else {
@@ -116,9 +113,7 @@ class Router extends Controller
                         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             if (!empty($_POST['title']) && !empty($_POST['content'])) {
                                 $this->updatePost($_POST['title'], $_POST['content'], $_GET['id']);
-                                echo 'Article modifié !';
-                            } else {
-                                throw new \Exception('Tous les champs ne sont pas remplis !');
+                                header("Location: index.php?action=post&id=".$_GET['id']);
                             }
                         }
                     } else {
@@ -133,12 +128,13 @@ class Router extends Controller
                 }elseif ($_GET['action'] == 'deleteComment') {
                     if (isset($_SESSION['pseudo']) && $_SESSION['group_id'] == 1) {
                         $this->deleteComment($_GET['id']);
+                        header('Location: index.php?action=moderate');
                     } else {
                         $this->listPosts();
                     }
                 } elseif ($_GET['action'] == 'report') {
-                    $this->reportComment($_GET['report'], $_GET['id']);
-                    header('Location: index.php');
+                    $this->reportComment($_GET['report'], $_GET['id'], $_GET['postid']);
+                    header("Location: index.php?action=post&id=".$_GET['postid']."#comments");
                 } else {
                     $this->listPosts();
                 }

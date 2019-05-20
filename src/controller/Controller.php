@@ -51,25 +51,24 @@ class Controller extends Twig
     public function updatePost($title, $content, $id)
     {
         $postManager = new PostManager();
-        $post = $postManager->updatePost($title, $content, $id);
+        $postManager->updatePost($title, $content, $id);
     }
 
     public function addComment($postId, $author, $comment)
     {
         $commentManager = new CommentManager();
 
-        $affectedLines = $commentManager->postComment($postId, $author, $comment);
+        $postComment = $commentManager->postComment($postId, $author, $comment);
 
-        if ($affectedLines === false) {
+        if ($postComment === false) {
             throw new \Exception('Impossible d\'ajouter le commentaire !');
         } else {
-            header('Location: index.php?action=post&id=' . $postId);
+            header('Location: index.php?action=post&id='.$postId.'#comments');
         }
     }
 
     public function login()
     {
-        // require('../src/view/frontend/login.php');
         echo $this->twig->render('frontend/login.twig');
     }
 
@@ -122,10 +121,9 @@ class Controller extends Twig
             array('delete'=>$infos));
     }
 
-    public function reportComment($report, $id)
+    public function reportComment($report, $id, $postId)
     {
         $reportComment = new CommentManager();
-        $reportComment->reportComment($report, $id);
+        $reportComment->reportComment($report, $id, $postId);
     }
-
 }

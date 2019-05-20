@@ -9,10 +9,10 @@
         <form method="post">
             <div>
                 <label>Titre</label>
-                <input id="title" name="title" value="{{ post.title }}">
+                <input id="title" name="title" value="{{ post.title }}" required="required">
             </div>
             <div>
-                <textarea id="tiny" name="content">{{ post.content }}</textarea>
+                <textarea id="tiny" name="content" required="required">{{ post.content }}</textarea>
             </div>
             <div>
                 <button type="submit">Envoyer</button>
