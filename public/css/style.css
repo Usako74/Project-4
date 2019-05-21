@@ -16,7 +16,6 @@ header {
 
 footer {
     width: 90%;
-    height: 100px;
     -webkit-border-radius: 0 0 60px 60px;
     -moz-border-radius: 0 0 60px 60px;
     border-radius: 0 0 60px 60px;
@@ -30,8 +29,7 @@ main {
 }
 
 nav {
-    z-index: 100;
-    align-self: center;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 figure {
@@ -44,7 +42,6 @@ h1, h2 {
 }
 
 a {
-    display: block;
     text-decoration: none;
     color: cornflowerblue;
 }
@@ -89,7 +86,7 @@ textarea {
 }
 
 .ul-size {
-    margin: 10px 25px;
+    margin: 0;
 }
 
 .text-center {
@@ -125,6 +122,10 @@ textarea {
     opacity: 0;
 }
 
+.align-center {
+    align-items: center;
+}
+
 .align-self-center {
     align-self: center;
 }
@@ -135,6 +136,10 @@ textarea {
 
 .space-btw {
     justify-content: space-between;
+}
+
+.flex-end {
+    justify-content: flex-end;
 }
 
 .white-background {
@@ -153,39 +158,18 @@ textarea {
     padding: 0.7em;
 }
 
+.bg-bar {
+    background-color: rgba(255,255,255,0.5);
+    border-top: 2px solid white;
+}
+
 /*      Secondary Design        */
 /* -- Header : NavBar -- */
-.nav-hover:first-child:hover .nav-secondary {
-    display: block;
-}
-
-.nav-hover {
-    position: relative;
-}
-
 nav li {
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.8);
-
 }
-
-nav li:hover a {
-    color: #779bfc;
-}
-
-
-.nav-secondary {
-    left: 0;
-    top: 100%;
-}
-
-
 
 /* -- Slider Design -- */
-.height_header {
-    height: 700px;
-}
-
 .circle-icon {
     -webkit-border-radius: 40px;
     -moz-border-radius: 40px;
@@ -198,7 +182,7 @@ nav li:hover a {
 .slider {
     position: relative;
     width: 100%;
-    height: 85%;
+    height: 560px;
 }
 
 .right {
@@ -237,7 +221,7 @@ nav li:hover a {
 
 .showslider {
     width: 100%;
-    height: 98%;
+    height: 100%;
 }
 
 
@@ -247,7 +231,6 @@ nav li:hover a {
 
 .title-design {
     border-bottom: 2px solid white;
-    padding: 1%;
     background-color: rgba(255,255,255,0.5);
 }
 

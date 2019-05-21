@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    {% block head %}
-    <meta charset="utf-8">
-    <title>{% block title %}{% endblock %}</title>
-        <link href="https://fonts.googleapis.com/css?family=Indie+Flower%7CJura%7CSpecial+Elite" rel="stylesheet">
-    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-    <link href="../public/css/style.css" rel="stylesheet">
-    {% endblock %}
+        {% block head %}
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>{% block title %}{% endblock %}</title>
+                <link href="https://fonts.googleapis.com/css?family=Indie+Flower%7CJura%7CSpecial+Elite" rel="stylesheet">
+                <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+                <link href="../public/css/style.css" rel="stylesheet">
+        {% endblock %}
 </head>
 
 <body>
 
 {% block header %}
-    {% include '/frontend/header.twig' %}
+        {% include '/frontend/header.twig' %}
 {% endblock %}
 
 
@@ -22,7 +23,7 @@
 {% endblock %}
 
 {% block footer %}
-    {% include '/frontend/footer.twig' %}
+        {% include '/frontend/footer.twig' %}
 {% endblock %}
 
 </body>

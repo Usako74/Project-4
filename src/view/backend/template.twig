@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{% endblock %}</title>
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower%7CJura%7CSpecial+Elite" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
@@ -9,7 +10,7 @@
 </head>
 <body>
 {% block header %}
-{% include '/backend/header.twig' %}
+    {% include '/backend/header.twig' %}
 {% endblock %}
 
 {% block content %}

@@ -10,7 +10,7 @@
         {% for article in articles %}
 
             <article class="paragraph-design">
-                <h3 class="title-design no-margin">
+                <h3 class="title-design no-margin general-padding">
                     {{ article.title }}
                     le {{ article.create_date_fr }}
                     par {{ article.author }}
@@ -19,10 +19,11 @@
                     {{ article.content | nl2br }}
                 </p>
 
-                <div class="display-flex general-padding space-btw">
-                    <a href="index.php?action=post&amp;id={{ article.id }}">Afficher les commentaires</a>
+                <div class="display-flex general-padding space-btw bg-bar">
+                    <a href="index.php?action=post&amp;id={{ article.id }}#article">Afficher l'article</a>
                     {% if session.pseudo is defined and session.group_id == 1 %}
                         <a href="index.php?action=modify&amp;id={{ article.id }}">Modifier l'article</a>
+                        <a href="index.php?action=deletePost&amp;id={{ article.id }}&amp;postId={{ article.id }}">Supprimer l'article</a>
                     {% endif %}
                 </div>
 

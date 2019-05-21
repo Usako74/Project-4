@@ -4,26 +4,29 @@
 {% extends '/frontend/template.twig' %}
 
 {% block content %}
+    <span id="article"></span>
     <main role="main" class="white-background">
         <p class="general-padding no-margin"><a href="index.php">Retour à la liste des billets</a></p>
-
         <article class="paragraph-design">
-            <h3 class="title-design no-margin">
+            <h3 class="title-design no-margin general-padding">
                 {{ post.title }}
-                 le {{ post.creation_date_fr }}
-                 par {{ post.author }}
+                le {{ post.creation_date_fr }}
+                par {{ post.author }}
             </h3>
 
             <p class="general-padding no-margin article-font">
                 {{ post.content  | nl2br }}
             </p>
             {% if session.pseudo is defined and session.group_id == 1 %}
-                <a href="index.php?action=modify&amp;id={{ post.id }}">Modifier l'article</a>
+                <div class="display-flex general-padding space-btw bg-bar">
+                    <a href="index.php?action=modify&amp;id={{ post.id }}">Modifier l'article</a>
+                    <a href="index.php?action=deletePost&amp;id={{ post.id }}&amp;postId={{ post.id }}">Supprimer l'article</a>
+                </div>
             {% endif %}
         </article>
 
         <article class="general-padding no-margin">
-            <h2 class="title-comment-design no-margin">Commentaires</h2>
+            <h2 class="title-comment-design no-margin general-padding">Commentaires</h2>
 
             <span id="postcomment"></span>
             <form action="index.php?action=addComment&amp;id={{ post.id }}" method="post" class="general-padding">
@@ -42,12 +45,12 @@
             <span id="comments"></span>
             {% for comment in comments %}
                 <article class="paragraph-design comment-design">
-                    <h3 class="title-design no-margin"><b>{{ comment.author }}</b> le {{ comment.comment_date_fr }}</h3>
+                    <h3 class="title-design no-margin general-padding"><b>{{ comment.author }}</b> le {{ comment.comment_date_fr }}</h3>
                     <p class="general-padding no-margin">{{ comment.comment }}</p>
                     {% if comment.comment_report == 0 %}
                         <a href='index.php?action=report&amp;report=1&amp;id={{ comment.id }}&amp;postid={{ post.id }}' class="text-right">Signaler le commentaire</a>
                     {% else %}
-                        <a href="index.php?action=report&amp;report=0&amp;id={{ comment.id }}&amp;postid={{ post.id }}" class="text-right">Ne plus signaler le commentaire</a>
+                        <p class="text-right general-padding">Commentaire signalé</p>
                     {% endif %}
                 </article>
             {% endfor %}

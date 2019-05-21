@@ -1,34 +1,52 @@
 {% block header %}
-    <header class="white-background height_header">
-        <div class="display-flex space-content">
-            <h1 class="text-center no-margin"><a href="index.php">Billet simple pour l'Alaska</a></h1>
-            <nav>
+    <header class="white-background">
+        <h1 class="text-center no-margin general-padding"><a href="index.php">Billet simple pour l'Alaska</a></h1>
+        <div id="slider">
+            <div class="slider display-flex">
+                <div class="display-flex">
+                    <figure class="showslider position-absolute">
+                        <img src="../public/img/aurora.jpg" alt="Photo d'une aurore boréale" class="full-size">
+                    </figure>
+                    <figure  class="showslider position-absolute transparency">
+                        <img src="../public/img/fjord.jpg" alt="Photo d'un paysage montagneux" class="full-size">
+                    </figure>
+                    <figure  class="showslider position-absolute transparency">
+                        <img src="../public/img/lake.jpg" alt="Photo d'un lac" class="full-size">
+                    </figure>
+                    <figure  class="showslider position-absolute transparency">
+                        <img src="../public/img/iceberg.jpg" alt="Photo d'un iceberg" class="full-size">
+                    </figure>
+                </div>
+                <i class="fas fa-angle-left fa-2x position-absolute left align-self-center white-color background-icon circle-icon text-center" id="button_left"></i>
+                <i class="fas fa-angle-right fa-2x position-absolute right align-self-center white-color background-icon circle-icon text-center" id="button_right"></i>
+                <div class="display-flex icon-center">
+                    <i class="far fa-pause-circle fa-4x position-absolute pause white-color background-icon" id="button_pause"></i>
+                    <i class="far fa-play-circle fa-4x position-absolute play white-color background-icon" id="button_play"></i>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="display-flex flex-end">
                 {% if session.pseudo is defined and session.group_id == 1 %}
-                    <ul class="display-flex ul-size">
-                        <li class="nav-hover">
-                            Administration</a>
-                            <ul class="display-none nav-secondary position-absolute">
-                                <li>
-                                    <a href="index.php?action=createArticle" class="align-self-center">Ecrire un article</a>
-                                </li>
-                                <li>
-                                    <a href="index.php?action=moderate" class="align-self-center">Modération</a>
-                                </li>
-                            </ul>
+                    <ul class="display-flex ul-size align-center">
+                        <p>Administration:</p>
+                        <li>
+                            <a href="index.php?action=createArticle" class="align-self-center">Ecrire un article</a>
+                        </li>
+                        <li>
+                            <a href="index.php?action=moderate" class="align-self-center">Modération</a>
                         </li>
 
                         <li>
                             <a href="index.php?action=disconnect" class="align-self-center">Se déconnecter</a>
                         </li>
                     </ul>
-                    <p class="align-self-center">Vous êtes connecté en tant que {{ session.pseudo }} !</p>
                 {% elseif session.pseudo is defined and session.group_id == 0 %}
                     <ul class="display-flex ul-size">
                         <li>
                             <a href="index.php?action=disconnect" class="align-self-center">Se déconnecter</a>
                         </li>
                     </ul>
-                    <p class="align-self-center">Vous êtes connecté en tant que {{ session.pseudo }} !</p>
                 {% else %}
                     <ul class="display-flex ul-size">
                         <li>
@@ -39,30 +57,12 @@
                         </li>
                     </ul>
                 {% endif %}
-            </nav>
-        </div>
-        <div id="slider" class="slider display-flex">
-            <div class="display-flex">
-                <figure class="showslider position-absolute">
-                    <img src="../public/img/aurora.jpg" alt="Photo d'une aurore boréale" class="full-size">
-                </figure>
-                <figure  class="showslider position-absolute transparency">
-                    <img src="../public/img/fjord.jpg" alt="Photo d'un paysage montagneux" class="full-size">
-                </figure>
-                <figure  class="showslider position-absolute transparency">
-                    <img src="../public/img/lake.jpg" alt="Photo d'un lac" class="full-size">
-                </figure>
-                <figure  class="showslider position-absolute transparency">
-                    <img src="../public/img/iceberg.jpg" alt="Photo d'un iceberg" class="full-size">
-                </figure>
             </div>
-            <i class="fas fa-angle-left fa-2x position-absolute left align-self-center white-color background-icon circle-icon text-center" id="button_left"></i>
-            <i class="fas fa-angle-right fa-2x position-absolute right align-self-center white-color background-icon circle-icon text-center" id="button_right"></i>
-            <div class="display-flex icon-center">
-                <i class="far fa-pause-circle fa-4x position-absolute pause white-color background-icon" id="button_pause"></i>
-                <i class="far fa-play-circle fa-4x position-absolute play white-color background-icon" id="button_play"></i>
-            </div>
-        </div>
+            {% if session.pseudo is defined %}
+                <p class="general-padding no-margin text-right">Vous êtes connecté en tant que {{ session.pseudo }} !</p>
+            {% endif %}
+        </nav>
+
     </header>
 
 {% endblock %}
