@@ -54,6 +54,14 @@ class Controller extends Twig
         $postManager->updatePost($title, $content, $id);
     }
 
+    public function deletePost($id, $postId)
+    {
+        $deletePost = new PostManager();
+        $deletePost-> deletePost($id);
+        $deleteComments = new CommentManager();
+        $deleteComments->deleteComments($postId);
+    }
+
     public function addComment($postId, $author, $comment)
     {
         $commentManager = new CommentManager();

@@ -37,7 +37,6 @@ class Router extends Controller
                         $this->listPosts();
                     } else {
                         $this->login();
-
                     }
                 } elseif($_GET['action'] == 'checkLogin') {
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -132,13 +131,20 @@ class Router extends Controller
                     } else {
                         $this->listPosts();
                     }
+                } elseif ($_GET['action'] == 'deletePost'){
+                    if (isset($_SESSION['pseudo']) && $_SESSION['group_id'] == 1) {
+                        $this->deletePost($_GET['id'], $_GET['postId']);
+                        header('Location: index.php');
+                    } else {
+                        $this->listPosts();
+                    }
                 } elseif ($_GET['action'] == 'moderate') {
                     if (isset($_SESSION['pseudo']) && $_SESSION['group_id'] == 1) {
                         $this->moderate();
                     } else {
                         $this->listPosts();
                     }
-                }elseif ($_GET['action'] == 'deleteComment') {
+                } elseif ($_GET['action'] == 'deleteComment') {
                     if (isset($_SESSION['pseudo']) && $_SESSION['group_id'] == 1) {
                         $this->deleteComment($_GET['id']);
                         header('Location: index.php?action=moderate');
