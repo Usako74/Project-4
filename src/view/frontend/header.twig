@@ -3,7 +3,7 @@
         <h1 class="text-center no-margin general-padding"><a href="index.php">Billet simple pour l'Alaska</a></h1>
         <div id="slider">
             <div class="slider display-flex">
-                <div class="display-flex">
+                <figure class="display-flex">
                     <figure class="showslider position-absolute">
                         <img src="../public/img/aurora.jpg" alt="Photo d'une aurore boréale" class="full-size">
                     </figure>
@@ -16,7 +16,7 @@
                     <figure  class="showslider position-absolute transparency">
                         <img src="../public/img/iceberg.jpg" alt="Photo d'un iceberg" class="full-size">
                     </figure>
-                </div>
+                </figure>
                 <i class="fas fa-angle-left fa-2x position-absolute left align-self-center white-color background-icon circle-icon text-center" id="button_left"></i>
                 <i class="fas fa-angle-right fa-2x position-absolute right align-self-center white-color background-icon circle-icon text-center" id="button_right"></i>
                 <div class="display-flex icon-center">
@@ -29,7 +29,6 @@
             <div class="display-flex flex-end">
                 {% if session.pseudo is defined and session.group_id == 1 %}
                     <ul class="display-flex ul-size align-center">
-                        <p>Administration:</p>
                         <li>
                             <a href="index.php?action=createArticle" class="align-self-center">Ecrire un article</a>
                         </li>
@@ -57,6 +56,11 @@
                         </li>
                     </ul>
                 {% endif %}
+                <ul class="ul-size">
+                    <li>
+                        <a href="index.php?action=contact">Contact</a>
+                    </li>
+                </ul>
             </div>
             {% if session.pseudo is defined %}
                 <p class="general-padding no-margin text-right">Vous êtes connecté en tant que {{ session.pseudo }} !</p>

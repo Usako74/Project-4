@@ -5,7 +5,6 @@
             <div class="display-flex flex-end">
                 {% if session.pseudo is defined and session.group_id == 1 %}
                     <ul class="display-flex ul-size align-center">
-                        <p>Administration:</p>
                         <li>
                             <a href="index.php?action=createArticle" class="align-self-center">Ecrire un article</a>
                         </li>
@@ -33,6 +32,11 @@
                         </li>
                     </ul>
                 {% endif %}
+                <ul class="ul-size">
+                    <li>
+                        <a href="index.php?action=contact">Contact</a>
+                    </li>
+                </ul>
             </div>
             {% if session.pseudo is defined %}
                 <p class="general-padding no-margin text-right">Vous êtes connecté en tant que {{ session.pseudo }} !</p>

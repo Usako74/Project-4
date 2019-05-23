@@ -3,21 +3,18 @@
 {% extends '/backend/template.twig' %}
 
 {% block content %}
-<main role="main" class="white-background">
-    <h2 class="general-padding">Création d'un article</h2>
-    <p class="general-padding no-margin"><a href="index.php">Retour à la liste des billets</a></p>
-    <form action="index.php?action=checkCreateArticle" method="post">
-        <div>
-            <label>Titre:</label>
+    <main class="white-background">
+        <h2 class="general-padding">Création d'un article</h2>
+        <p class="general-padding no-margin"><a href="index.php">Retour à la liste des billets</a></p>
+        <form action="index.php?action=checkCreateArticle" method="post" class="text-center">
+            <label for="title">Titre:</label>
+            <br>
             <input id="title" name="title" required="required">
-        </div>
-        <div>
-            <label>Article:</label>
-            <textarea id="tiny" name="content"></textarea>
-        </div>
-        <div>
-            <button type="submit">Envoyer</button>
-        </div>
-    </form>
-</main>
+            <br>
+            <label for="tiny">Article:</label>
+            <br>
+            <textarea id="tiny" name="content""></textarea>
+            <input type="submit" value="Envoyer">
+        </form>
+    </main>
 {% endblock %}

@@ -3,12 +3,9 @@
 {% extends '/frontend/template.twig' %}
 
 {% block content %}
-    <main role="main" class="white-background">
+    <main class="white-background">
         <h2 class="no-margin general-padding">Liste des articles</h2>
-
-
         {% for article in articles %}
-
             <article class="paragraph-design">
                 <h3 class="title-design no-margin general-padding">
                     {{ article.title }}
@@ -26,7 +23,6 @@
                         <a href="index.php?action=deletePost&amp;id={{ article.id }}&amp;postId={{ article.id }}">Supprimer l'article</a>
                     {% endif %}
                 </div>
-
             </article>
         {% endfor %}
     </main>
