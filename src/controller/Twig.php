@@ -10,10 +10,20 @@ namespace App\Controller;
 
 require_once '../vendor/autoload.php';
 
+/**
+ * Class Twig
+ * @package App\Controller
+ */
 class Twig
 {
+    /**
+     * @var \Twig\Environment
+     */
     protected $twig;
 
+    /**
+     * Twig constructor.
+     */
     function __construct()
     {
         // Twig Configuration

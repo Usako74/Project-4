@@ -10,8 +10,18 @@ namespace App\Model;
 
 use Conf\Manager;
 
+/**
+ * Class PostManager
+ * @package App\Model
+ */
 class PostManager extends Manager
 {
+    /**
+     * @param $author
+     * @param $title
+     * @param $content
+     * @return mixed
+     */
     public function addPost($author, $title, $content)
     {
         $db = $this->dbConnect();
@@ -21,13 +31,21 @@ class PostManager extends Manager
         return $infos;
     }
 
+    /**
+     * @return false|\PDOStatement
+     */
     public function getPosts()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, author, title, content, DATE_FORMAT(created_date_time, \'%d/%m/%Y à %Hh%imin%ss\') AS create_date_fr FROM posts ORDER BY created_date_time DESC LIMIT 0, 5');
+        $req = $db->prepare('SELECT id, author, title, content, DATE_FORMAT(created_date_time, \'%d/%m/%Y à %Hh%imin%ss\') AS create_date_fr FROM posts ORDER BY created_date_time DESC LIMIT 0, 5');
+        $req->execute();
         return $req;
     }
 
+    /**
+     * @param $postId
+     * @return mixed
+     */
     public function getPost($postId)
     {
         $db = $this->dbConnect();
@@ -37,6 +55,12 @@ class PostManager extends Manager
         return $post;
     }
 
+    /**
+     * @param $title
+     * @param $content
+     * @param $id
+     * @return mixed
+     */
     public function updatePost($title, $content, $id)
     {
         $db = $this->dbConnect();
@@ -46,6 +70,10 @@ class PostManager extends Manager
         return $infos;
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function deletePost($id){
         $db = $this->dbConnect();
         $req = $db->prepare('DELETE FROM posts WHERE ID = ?;');

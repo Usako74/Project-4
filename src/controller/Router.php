@@ -1,8 +1,17 @@
 <?php
 namespace App\Controller;
 
+/**
+ * Class Router
+ * @package App\Controller
+ */
 class Router extends Controller
 {
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function postListPost()
     {
         if ($_GET['action'] == 'listPosts') {
@@ -16,6 +25,11 @@ class Router extends Controller
         }
     }
 
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function postCreateArticle()
     {
         if ($_GET['action'] == 'createArticle') {
@@ -27,6 +41,9 @@ class Router extends Controller
         }
     }
 
+    /**
+     *
+     */
     public function postCheckArticle(){
         if ($_GET['action'] == 'checkCreateArticle'){
             if (isset($_SESSION['pseudo']) && $_SESSION['group_id'] == 1) {
@@ -41,6 +58,11 @@ class Router extends Controller
         }
     }
 
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function postModify()
     {
         if ($_GET['action'] == 'modify') {
@@ -52,6 +74,11 @@ class Router extends Controller
         }
     }
 
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function postCheckModify()
     {
         if ($_GET['action'] == 'checkModify') {
@@ -69,6 +96,11 @@ class Router extends Controller
         }
     }
 
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function postDeletePost(){
         if ($_GET['action'] == 'deletePost'){
             if (isset($_SESSION['pseudo']) && $_SESSION['group_id'] == 1) {
@@ -80,12 +112,15 @@ class Router extends Controller
         }
     }
 
+    /**
+     * @throws \Exception
+     */
     public function commentAddComment()
     {
         if ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-                    $this->addComment($_GET['id'], $_POST['author'], $_POST['comment']);
+                if (isset($_SESSION['pseudo']) && !empty($_POST['comment'])) {
+                    $this->addComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
                     header("Location: index.php?action=post&id=".$_GET['id']."#comments");
                     exit();
                 }
@@ -95,6 +130,11 @@ class Router extends Controller
         }
     }
 
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function commentDeleteComment(){
         if ($_GET['action'] == 'deleteComment') {
             if (isset($_SESSION['pseudo']) && $_SESSION['group_id'] == 1) {
@@ -107,6 +147,11 @@ class Router extends Controller
         }
     }
 
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function userLogin()
     {
         if ($_GET['action'] == 'login') {
@@ -118,6 +163,9 @@ class Router extends Controller
         }
     }
 
+    /**
+     *
+     */
     public function userCheckLogin()
     {
         if($_GET['action'] == 'checkLogin') {
@@ -137,6 +185,11 @@ class Router extends Controller
         }
     }
 
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function userRegister()
     {
         if ($_GET['action'] == 'register') {
@@ -148,6 +201,9 @@ class Router extends Controller
         }
     }
 
+    /**
+     * @throws \Exception
+     */
     public function userCheckRegister()
     {
         if ($_GET['action'] == 'checkRegister') {
@@ -180,6 +236,18 @@ class Router extends Controller
         }
     }
 
+    public function userContact()
+    {
+        if ($_GET['action'] == 'contact') {
+            $this->contact();
+        }
+    }
+
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function userDisconnect()
     {
         if ($_GET['action'] == 'disconnect') {
@@ -196,6 +264,9 @@ class Router extends Controller
         }
     }
 
+    /**
+     *
+     */
     public function userReport()
     {
         if ($_GET['action'] == 'report') {
@@ -205,6 +276,11 @@ class Router extends Controller
         }
     }
 
+    /**
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function adminModerate()
     {
         if ($_GET['action'] == 'moderate') {
@@ -216,7 +292,9 @@ class Router extends Controller
         }
     }
 
-
+    /**
+     *
+     */
     public function run()
     {
         try {
@@ -235,12 +313,13 @@ class Router extends Controller
                 $this->userCheckRegister();
                 $this->userDisconnect();
                 $this->userReport();
+                $this->userContact();
                 $this->adminModerate();
             } else {
                 $this->listPosts();
             }
         } catch (\Exception $e) {
-            echo 'Une erreur s\'est produite : <br>' . $e->getMessage();
+            echo htmlspecialchars('Une erreur s\'est produite : ' . $e->getMessage());
         }
     }
 }

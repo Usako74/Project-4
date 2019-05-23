@@ -10,8 +10,17 @@ namespace App\Model;
 
 use Conf\Manager;
 
+/**
+ * Class CommentManager
+ * @package App\Model
+ */
 class CommentManager extends Manager
 {
+    /**
+     * @param $postId
+     * @param $author
+     * @param $comment
+     */
     public function postComment($postId, $author, $comment)
     {
         $db = $this->dbConnect();
@@ -19,6 +28,10 @@ class CommentManager extends Manager
         $comments->execute(array($postId, $author, $comment));
     }
 
+    /**
+     * @param $postId
+     * @return bool|\PDOStatement
+     */
     public function getComments($postId)
     {
         $db = $this->dbConnect();
@@ -27,6 +40,9 @@ class CommentManager extends Manager
         return $comments;
     }
 
+    /**
+     * @return bool|\PDOStatement
+     */
     public function getReportsComments()
     {
         $db = $this->dbConnect();
@@ -35,6 +51,11 @@ class CommentManager extends Manager
         return $comments;
     }
 
+    /**
+     * @param $report
+     * @param $id
+     * @param $postId
+     */
     public function reportComment($report, $id, $postId)
     {
         $db = $this->dbConnect();
@@ -42,6 +63,10 @@ class CommentManager extends Manager
         $req->execute(array($report, $id, $postId));
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function deleteComment($id)
     {
         $db = $this->dbConnect();
@@ -51,6 +76,10 @@ class CommentManager extends Manager
         return $infos;
     }
 
+    /**
+     * @param $postId
+     * @return mixed
+     */
     public function deleteComments($postId)
     {
         $db = $this->dbConnect();

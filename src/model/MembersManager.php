@@ -1,18 +1,19 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Usako
- * Date: 02/05/2019
- * Time: 09:35
- */
-
 namespace App\Model;
 
 use Conf\Manager;
 
-
+/**
+ * Class MembersManager
+ * @package App\Model
+ */
 class MembersManager extends Manager
 {
+    /**
+     * @param $pseudo
+     * @param $password
+     * @param $email
+     */
     public function createMember($pseudo, $password, $email)
     {
         $db = $this->dbConnect();
@@ -20,6 +21,10 @@ class MembersManager extends Manager
         $register->execute(array($pseudo, $password, $email));
     }
 
+    /**
+     * @param $login
+     * @return mixed
+     */
     public function connectInfos($login)
     {
         $db = $this->dbConnect();
@@ -29,6 +34,10 @@ class MembersManager extends Manager
         return $infos;
     }
 
+    /**
+     * @param $login
+     * @return mixed
+     */
     public function checkPseudo($login)
     {
         $db = $this->dbConnect();
