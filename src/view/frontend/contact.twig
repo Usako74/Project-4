@@ -1,0 +1,32 @@
+{% block title %} Billet simple pour L'alaska - Contact {% endblock %}
+
+{% extends '/frontend/template.twig' %}
+
+{% block content %}
+    <main class="white-background">
+        <h2 class="general-padding">Contact</h2>
+        <p class="general-padding no-margin"><a href="index.php">Retour à la liste des billets</a></p>
+        <form action="" method="post" class="width-form z-center-block">
+            <label for="subject">Titre:</label>
+            <br>
+            <input type="text" id="subject" name="subject" required="required">
+            <br>
+            <label for="name">Nom:</label>
+            <br>
+            <input type="text" id="name" name="name" required="required">
+            <br>
+            <label for="firstname">Prénom:</label>
+            <br>
+            <input type="text" id="firstname" name="firstname" required="required">
+            <br>
+            <label for="email">E-Mail:</label>
+            <br>
+            <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="exemple d'e-mail: exemple@exemple.com" required="required">
+            <br>
+            <label for="message">Message:</label>
+            <br>
+            <textarea id="message" name="message" class="design-txtarea" required="required"></textarea>
+            <input type="submit" value="Envoyer">
+        </form>
+    </main>
+{% endblock %}
